@@ -76,11 +76,69 @@ hr { height: 2px; background-color: #334155; border: 0; margin: 30px 0; }
         <li><em>Deliverable:</em> <a href="./marconi-law-sla.pdf" target="_blank">Read the Marconi Law SLA Framework</a></li>
     </ul>
 
-    <h3>3. Automated System Hardening & Core Infrastructure (WIP)</h3>
+<h3>3. Automated Cloud Provisioning & LAMP Stack Orchestration</h3>
     <ul>
-        <li><strong>Goal:</strong> Streamline enterprise compliance and baseline deployments.</li>
-        <li><strong>Action:</strong> Developing automated Ansible playbooks for automated DISA STIG hardening on cloud nodes while managing testing environments using virtualized Windows Server 2025 Domain Controllers.</li>
+        <li><strong>Goal:</strong> Automate infrastructure deployment and application provisioning to eliminate manual configuration.</li>
+        <li><strong>Action:</strong> Engineered a multi-play Ansible playbook that provisions Ubuntu droplets on DigitalOcean, configures local security baselines (UFW), initializes a MySQL database structure, and deploys a production-ready WordPress core.</li>
     </ul>
+    <pre style="background: #1e293b; color: #38bdf8; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.85em; border: 1px solid #334155; font-family: 'Courier New', Courier, monospace;">
+- name: Play 1 - Provision Droplets
+  hosts: localhost
+  connection: local
+  vars:
+    do_token: "dop_v1_6df28fa..."
+    ssh_key_id: 55756275
+    last_name: "Selk"
+  tasks:
+    - name: Create the WordPress Droplets
+      community.digitalocean.digital_ocean_droplet:
+        state: present
+        oauth_token: "{{ do_token }}"
+        name: "{{ item }}"
+        size: s-1vcpu-1gb
+        image: ubuntu-24-04-x64
+        region: nyc3
+        ssh_keys: [ "{{ ssh_key_id }}" ]
+        unique_name: yes
+        loop:
+          - "{{ last_name }}F-2604-WP1"
+          - "{{ last_name }}F-2604-WP2"
+
+- name: Play 2 - Install LAMP Stack
+  hosts: wordpress_servers
+  become: yes
+  tasks:
+    - name: Install Apache, MySQL, and PHP
+      apt:
+        name:
+          - apache2
+          - mysql-server
+          - php
+          - python3-pymysql
+        state: present
+    - name: Create MySQL Database
+      mysql_db:
+        name: Selk_Portfolio
+        state: present
+    - name: Create MySQL User
+      mysql_user:
+        name: wselk_admin
+        password: "Fullsail1!"
+        priv: 'Selk_Portfolio.*:ALL'
+        state: present
+    - name: Download and Unpack WordPress
+      unarchive:
+        src: https://wordpress.org/latest.tar.gz
+        dest: /var/www/html
+        remote_src: yes
+        extra_opts: [--strip-components=1]
+    - name: Set permissions for Apache
+      file:
+        path: /var/www/html
+        owner: www-data
+        group: www-data
+        recurse: yes
+    </pre>
 
     <hr>
     <p style="text-align: center;">
