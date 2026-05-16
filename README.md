@@ -15,7 +15,7 @@ U.S. Army Veteran and IT student focusing on systems infrastructure, automation,
 ### 1. AWS Cloud Infrastructure Design & High-Availability Deployment
 * **Goal:** Design a scalable, secure, and load-balanced document management ecosystem.
 * **Action:** Built a multi-node Linux infrastructure on AWS using EC2 instances, isolated database servers, and HAProxy for round-robin routing and SSL encryption.
-* **Deliverable:** [Read the Full AWS Deployment & SOW Blueprint](./aws-deployment-guide.PDF)
+* **Deliverable:** [Read the Full AWS Deployment & SOW Blueprint](./multi-node-linux-aws.PDF)
 
 ### 2. Enterprise IT Service Level Agreement (SLA) & Support Framework
 * **Goal:** Architect a structured corporate IT Service Management (ITSM) operational strategy.
