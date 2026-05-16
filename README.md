@@ -1,3 +1,6 @@
+---
+title: Portfolio
+---
 # William Selk
 **Systems Infrastructure & LiveOps Specialist | Windows Server 2025 • Ansible Automation • System Hardening | Army Aviation Veteran**
 
