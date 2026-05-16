@@ -19,12 +19,12 @@ U.S. Army Veteran and IT student focusing on systems infrastructure, automation,
 ### 1. AWS Cloud Infrastructure Design & High-Availability Deployment
 * **Goal:** Design a scalable, secure, and load-balanced document management ecosystem.
 * **Action:** Built a multi-node Linux infrastructure on AWS using EC2 instances, isolated database servers, and HAProxy for round-robin routing and SSL encryption.
-*Deliverable:* [Read the Full AWS Deployment & SOW Blueprint](./multi-node-linux-aws.pdf)
+*Deliverable:* [Read the Full AWS Deployment & SOW Blueprint](https://raw.githubusercontent.com/Wselk/wselk.github.io/main/multi-node-linux-aws.pdf)
 
 ### 2. Enterprise IT Service Level Agreement (SLA) & Support Framework
 * **Goal:** Architect a structured corporate IT Service Management (ITSM) operational strategy.
 * **Action:** Drafted a comprehensive vendor SLA for a corporate client establishing cross-platform support scopes, system boundaries, and a disciplined multi-tiered Severity Response Index.
-*Deliverable:* [Read the Marconi Law SLA Framework](./marconi-law-sla.pdf)
+*Deliverable:* [Read the Marconi Law SLA Framework](https://raw.githubusercontent.com/Wselk/wselk.github.io/main/marconi-law-sla.pdf)
 
 ### 3. Automated System Hardening & Core Infrastructure (WIP)
 * **Goal:** Streamline enterprise compliance and baseline deployments.
